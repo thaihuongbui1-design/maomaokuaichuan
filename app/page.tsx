@@ -1,7 +1,8 @@
 "use client";
 import dynamic from 'next/dynamic';
 
-// 这行代码是魔法：它告诉 Next.js "只在浏览器里加载这个组件，服务器别碰它"
+// 这一行是关键：ssr: false 意思就是“不要在服务器上运行，只在浏览器运行”
+// 这样就完美避开了 localStorage 报错
 const ClientPage = dynamic(() => import('./ClientPage'), { ssr: false });
 
 export default function Page() {
